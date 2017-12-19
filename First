@@ -1,0 +1,127 @@
+import time
+import random
+
+def main():
+    """Body of program. Playing 'Rock, Paper, Scissors' against a bot"""
+    # Introduction
+    print("")
+    print("Rock, Paper, Scissors")
+    print("-------------------------")
+    completegame = False
+    while not completegame:
+        print("")
+        time.sleep(1)
+
+        """RUNS USER'S SELECTION PHASE"""
+        user_selection = False
+        while not user_selection:
+            """Runs the user's turn"""
+            try:
+                print("Please choose a selection from the following moves...")
+                print("")
+                time.sleep(2)
+                print("1) ROCK")
+                time.sleep(0.5)
+                print("2) PAPER")
+                time.sleep(0.5)
+                print("3) SCISSORS")
+                print("")
+                time.sleep(0.7)
+                usermove = int(input("Chosen move (enter a number):"))
+                if usermove == 1:
+                    time.sleep(0.5)
+                    print("You chose to use ROCK. Is this correct?")
+                    time.sleep(2)
+                    confirmselection = input("Type 'y' for YES or any other input for NO")
+                    if confirmselection == 'y':
+                        usermove = "ROCK"
+                        user_selection = True
+                    else:
+                        print("")
+                        time.sleep(1)
+                        print("You chose to change your move...")
+                        print("")
+                        time.sleep(2)
+                elif usermove == 2:
+                    time.sleep(0.5)
+                    print("You chose to use PAPER. Is this correct?")
+                    time.sleep(2)
+                    confirmselection = input("Type 'y' for YES or any other input for NO")
+                    if confirmselection == 'y':
+                        usermove = "PAPER"
+                        user_selection = True
+                    else:
+                        print("")
+                        time.sleep(1)
+                        print("You chose to change your move...")
+                        print("")
+                        time.sleep(2)
+                elif usermove == 3:
+                    time.sleep(0.5)
+                    print("You chose to use SCISSORS. Is this correct?")
+                    time.sleep(2)
+                    confirmselection = input("Type 'y' for YES or any other input for NO")
+                    if confirmselection == 'y':
+                        usermove = "SCISSORS"
+                        user_selection = True
+                    else:
+                        print("")
+                        time.sleep(1)
+                        print("You chose to change your move...")
+                        print("")
+                        time.sleep(2)
+            except:
+                print("Invalid Input")
+
+        """RUNS COMPUTER'S SELECTION PHASE"""
+        botmove = int(random.randint(1, 3))  # Declares the computer's move
+        if botmove == 1:
+            botmove = "ROCK"
+        elif botmove == 2:
+            botmove = "PAPER"
+        elif botmove == 3:
+            botmove = "SCISSORS"
+
+        """COMPARES CHOICES AND DECLARES A WINNER"""
+        print("")
+        print("Declaring winner...")
+        time.sleep(2)
+        print("")
+        print("You chose", usermove)
+        time.sleep(2)
+        print("The computer chose", botmove)
+        time.sleep(1)
+        if (usermove == "ROCK" and botmove == "ROCK") or \
+                (usermove == "PAPER" and botmove == "PAPER") or \
+                (usermove == "SCISSORS" and botmove == "SCISSORS"):
+            print("")
+            print("Both participants chose the same!")
+            time.sleep(2)
+            print("")
+            print("Restarting game...")
+            print("")
+            time.sleep(3.5)
+            print("-----------------------------------------------")
+            print("")
+
+        elif (usermove == "ROCK" and botmove == "SCISSORS") or \
+                (usermove == "PAPER" and botmove == "ROCK") or \
+                (usermove == "SCISSORS" and botmove == "PAPER"):
+            print("")
+            print("You WIN!!!!")
+            completegame = True
+        elif (botmove == "ROCK" and usermove == "SCISSORS") or \
+                (botmove == "PAPER" and usermove == "ROCK") or \
+                (botmove == "SCISSORS" and usermove == "PAPER"):
+            print("")
+            print("The computer won!")
+            time.sleep(2)
+            print("")
+            print("Restarting game...")
+            print("")
+            time.sleep(3.5)
+            print("-----------------------------------------------")
+            print("")
+
+
+main()
